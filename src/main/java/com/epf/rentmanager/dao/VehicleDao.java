@@ -25,9 +25,26 @@ public class VehicleDao {
 	private static final String DELETE_VEHICLE_QUERY = "DELETE FROM Vehicle WHERE id=?;";
 	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle WHERE id=?;";
 	private static final String FIND_VEHICLES_QUERY = "SELECT id, constructeur,  nb_places FROM Vehicle;";
-	
+
+	private static final String COUNT_VEHICLE = "SELECT COUNT(id) AS nbrVehicles FROM Vehicle;";
 	public long create(Vehicle vehicle) throws DaoException {
-		return 0;
+		long id = 0;
+		try {
+			Connection connection = ConnectionManager.getConnection();
+			PreparedStatement ps = connection.prepareStatement(CREATE_VEHICLE_QUERY, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, vehicle.getConstructeur());
+			ps.setInt(2, vehicle.getNb_places());
+			ps.execute();
+			ResultSet resultSet = ps.getGeneratedKeys();
+			if (resultSet.next()) {
+				id = resultSet.getLong(1);
+			}
+			ps.close();
+			connection.close();
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+		return id;
 	}
 
 	public long delete(Vehicle vehicle) throws DaoException {
@@ -71,7 +88,22 @@ public class VehicleDao {
 			e.printStackTrace();
 		}
 		return vehicles;
-		
+	}
+
+	public long Count() throws DaoException{
+		int nbrVehicle =1;
+		try{
+			Connection co = ConnectionManager.getConnection();
+			PreparedStatement ps = co.prepareStatement(COUNT_VEHICLE);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()){
+				nbrVehicle = rs.getInt("nbrVehicles");
+			}
+			return nbrVehicle;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return 0;
 	}
 	
 

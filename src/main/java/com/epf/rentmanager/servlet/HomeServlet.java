@@ -2,6 +2,8 @@ package com.epf.rentmanager.servlet;
 
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.service.ClientService;
+import com.epf.rentmanager.service.ReservationService;
+import com.epf.rentmanager.service.VehicleService;
 
 import java.io.IOException;
 
@@ -21,12 +23,13 @@ public class HomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	/*	manque la fonction count
 	try{
-			request.setAttribute("nbrclient", ClientService.count());
-		}catch (ServiceException e){
+		request.setAttribute("nbrclient", ClientService.getInstance().Count() );
+		request.setAttribute("nbrvehicle", VehicleService.getInstance().Count() );
+		request.setAttribute("nbrresa", ReservationService.getInstance().count() );
+	}catch (ServiceException e){
 			e.printStackTrace();
-		}*/
+		}
 		this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/home.jsp")
 				.forward(request, response);

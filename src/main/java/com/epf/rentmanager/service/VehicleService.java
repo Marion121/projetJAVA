@@ -28,8 +28,12 @@ public class VehicleService {
 	
 	
 	public long create(Vehicle vehicle) throws ServiceException {
-		// TODO: créer un véhicule
-		return 0;
+		try{
+			return VehicleDao.getInstance().create(vehicle);
+		}catch (DaoException e){
+			e.printStackTrace();
+			throw new ServiceException();
+		}
 	}
 
 	public Vehicle findById(int id) throws ServiceException {
@@ -48,6 +52,15 @@ public class VehicleService {
 	public List<Vehicle> findAll() throws ServiceException {
 		try{
 			return VehicleDao.getInstance().findAll();
+		}catch (DaoException e){
+			e.printStackTrace();
+			throw new ServiceException();
+		}
+	}
+
+	public long Count() throws ServiceException {
+		try{
+			return VehicleDao.getInstance().Count();
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();

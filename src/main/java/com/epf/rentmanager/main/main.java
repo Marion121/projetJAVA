@@ -18,6 +18,7 @@ public class main {
             //Client c  = new Client(5, "CHINEAUD", "Marion", "m.c@gmail.com", LocalDate.now());
             //ClientDao.getInstance().delete(c);
             System.out.println(ClientService.getInstance().findAll());
+            System.out.println("ici : " + VehicleService.getInstance().findAll());
         }catch(ServiceException e){
             e.printStackTrace();
         }
