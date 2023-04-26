@@ -1,5 +1,6 @@
 package com.epf.rentmanager.model;
 
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -7,6 +8,9 @@ public class Reservation {
     private int id_R;
     private int client_id;
     private int vehicle_id;
+
+    private Client client;
+    private Vehicle vehicle;
     private LocalDate debut;
     private LocalDate fin;
 
@@ -16,6 +20,29 @@ public class Reservation {
         this.vehicle_id = vehicle_id;
         this.debut = debut;
         this.fin = fin;
+    }
+    public Reservation( int client_id, int vehicle_id, LocalDate debut, LocalDate fin) {
+        this.client_id = client_id;
+        this.vehicle_id = vehicle_id;
+        this.debut = debut;
+        this.fin = fin;
+    }
+
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
     public int getId_R() {
@@ -66,6 +93,6 @@ public class Reservation {
                 ", vehicle_id=" + vehicle_id +
                 ", debut=" + debut +
                 ", fin=" + fin +
-                '}';
+                '}'+'\n';
     }
 }

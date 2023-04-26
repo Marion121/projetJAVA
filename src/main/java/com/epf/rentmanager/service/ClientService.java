@@ -4,32 +4,60 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.epf.rentmanager.dao.ClientDao;
+import com.epf.rentmanager.dao.ReservationDao;
 import com.epf.rentmanager.dao.VehicleDao;
 import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Client;
+import com.epf.rentmanager.validateur.validateurClient;
+import org.springframework.stereotype.Service;
 
+import static com.epf.rentmanager.validateur.validateurResa.reservationDao;
+import static com.epf.rentmanager.validateur.validateurResa.vehicleDao;
+
+@Service
 public class ClientService {
 
 	private ClientDao clientDao;
+	public static validateurClient vClient ;
+	public static ReservationService reservationService ;
 	public static ClientService instance;
-	
-	private ClientService() {
-		this.clientDao = ClientDao.getInstance();
-	}
-	
-	public static ClientService getInstance() {
+
+	/*public static ClientService getInstance() {
 		if (instance == null) {
 			instance = new ClientService();
 		}
 		
 		return instance;
+	}*/
+	public ClientService(ClientDao clientDao){
+		this.clientDao = clientDao;
+
 	}
 	
 	
 	public long create(Client client) throws ServiceException {
 		try{
-			return ClientDao.getInstance().create(client);
+			if( vClient.isLegal(client) & vClient.tailleNom(client) & vClient.mailOK(client)) {
+				return this.clientDao.create(client);
+			}
+			else{
+				return 0;
+			}
+		}catch (DaoException e){
+			e.printStackTrace();
+			throw new ServiceException();
+		}
+	}
+
+	public long delete(Client client) throws ServiceException {
+		reservationDao = new ReservationDao();
+		clientDao = new ClientDao();
+		vehicleDao = new VehicleDao();
+		reservationService = new ReservationService(reservationDao,clientDao,vehicleDao);
+		reservationService.SuppByClientId(client.getId());
+		try{
+			return this.clientDao.delete(client);
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();
@@ -41,7 +69,7 @@ public class ClientService {
 			throw new ServiceException("ERREUR : ID non valide");
 		}
 		try{
-			return ClientDao.getInstance().findById(id);
+			return this.clientDao.findById(id);
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();
@@ -50,16 +78,17 @@ public class ClientService {
 
 	public List<Client> findAll() throws ServiceException {
 		try{
-			return ClientDao.getInstance().findAll();
+			return this.clientDao.findAll();
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();
 		}
 	}
 
+
 	public long Count() throws ServiceException {
 		try{
-			return ClientDao.getInstance().Count();
+			return this.clientDao.Count();
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();

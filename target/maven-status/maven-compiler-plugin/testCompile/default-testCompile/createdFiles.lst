@@ -1,1 +1,7 @@
-epf/AppTest.class
+com\ensta\rentmanager\service\ClientServicesTest.class
+com\ensta\rentmanager\service\VehicleServicesTest$UserServiceTest.class
+epf\AppTest.class
+com\ensta\rentmanager\service\ReservationServicesTest.class
+com\ensta\rentmanager\service\ClientServicesTest$UserServiceTest.class
+com\ensta\rentmanager\service\VehicleServicesTest.class
+com\ensta\rentmanager\service\ReservationServicesTest$UserServiceTest.class

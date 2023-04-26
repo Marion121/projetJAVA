@@ -1,7 +1,7 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<%@include file="/WEB-INF/views/common/head.jsp"%>
+<%@include file="/WEB-INF/views/common/head.jsp" %>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -11,7 +11,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+    <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
                 Utilisateurs
@@ -31,43 +31,31 @@
                                     <th>Nom</th>
                                     <th>Prenom</th>
                                     <th>Email</th>
+                                    <th>Date de naissance</th>
                                     <th>Action</th>
-                                </tr>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john.doe@epf.fr</td>
-                                    <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=1">
-                                        <i class="fa fa-play"></i>
-                                        </a>
-                                        <a class="btn btn-success disabled" href="#">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a class="btn btn-danger disabled" href="#">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
 
+                                </tr>
                                 <tr>
-                                    <td>2.</td>
-                                    <td>Jane</td>
-                                    <td>Doe</td>
-                                    <td>jane.doe@epf.fr</td>
+                                <c:forEach items="${clients}" var="client">
+
+                                    <td>${client.id}</td>
+                                    <td>${client.nom}</td>
+                                    <td>${client.prenom}</td>
+                                    <td>${client.email}</td>
+                                    <td>${client.naissance}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=2">
+                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/detail?id=${client.id}">
                                             <i class="fa fa-play"></i>
                                         </a>
-                                        <a class="btn btn-success disabled" href="#">
+                                        <a class="btn btn-success disabled" href="${pageContext.request.contextPath}/users/modif?id=${client.id}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-danger disabled" href="#">
+                                        <a class="btn btn-danger " href="${pageContext.request.contextPath}/users/delete?id=${client.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
+                                </c:forEach>
                             </table>
                         </div>
                         <!-- /.box-body -->

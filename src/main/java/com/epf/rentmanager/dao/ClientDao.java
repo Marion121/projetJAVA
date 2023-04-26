@@ -9,20 +9,22 @@ import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ClientDao {
 
     private static ClientDao instance = null;
 
-    private ClientDao() {
+    public ClientDao() {
     }
 
-    public static ClientDao getInstance() {
+   /* public static ClientDao getInstance() {
         if (instance == null) {
             instance = new ClientDao();
         }
         return instance;
-    }
+    }*/
 
     private static final String CREATE_CLIENT_QUERY = "INSERT INTO Client(nom, prenom, email, naissance) VALUES(?, ?, ?, ?);";
     private static final String DELETE_CLIENT_QUERY = "DELETE FROM Client WHERE id=?;";
@@ -87,24 +89,20 @@ public class ClientDao {
             e.printStackTrace();
             throw new DaoException();
         }
-
     }
 
     public List<Client> findAll() throws DaoException {
         List<Client> clients = new ArrayList<Client>();
         try {
-            String nom ="";
-            String prenom = "";
-            String email = "";
             LocalDate date = LocalDate.now();
             Connection connection = ConnectionManager.getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(FIND_CLIENTS_QUERY);
             while(rs.next()){
                 int id = rs.getInt("id");
-                nom = rs.getString("nom");
-                prenom = rs.getString("prenom");
-                email = rs.getString("email");
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                String email = rs.getString("email");
                 date = rs.getDate("naissance").toLocalDate();
 
                 clients.add(new Client(id,nom, prenom, email, date));

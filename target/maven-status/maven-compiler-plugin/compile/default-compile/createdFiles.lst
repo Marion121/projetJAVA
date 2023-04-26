@@ -1,4 +1,4 @@
-com\epf\rentmanager\servlet\ClientListServet.class
-com\epf\rentmanager\service\ReservationService.class
-com\epf\rentmanager\servlet\VehicleCreateServet.class
-com\epf\rentmanager\servlet\VehicleListServlet.class
+com\epf\rentmanager\servlet\vehicle\VehicleDeleteServet.class
+com\epf\rentmanager\servlet\vehicle\VehicleDetailServet.class
+com\epf\rentmanager\WebConfiguration.class
+com\epf\rentmanager\servlet\client\ClientModifServet.class

@@ -2,34 +2,65 @@ package com.epf.rentmanager.service;
 
 import java.util.List;
 
+import com.epf.rentmanager.dao.ReservationDao;
 import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.VehicleDao;
+import com.epf.rentmanager.validateur.validateurClient;
+import com.epf.rentmanager.validateur.validateurVehicle;
+import org.springframework.stereotype.Service;
 
+import static com.epf.rentmanager.validateur.validateurResa.reservationDao;
+import static com.epf.rentmanager.validateur.validateurResa.vehicleDao;
+
+@Service
 public class VehicleService {
 
+	public static validateurVehicle vVehicle ;
+
+	public static ReservationService reservationService ;
 	private VehicleDao vehicleDao;
+	private ClientDao clientDao;
 	public static VehicleService instance;
 	
-	private VehicleService() {
-		this.vehicleDao = VehicleDao.getInstance();
+	public VehicleService(VehicleDao vehicleDao) {
+
+		this.vehicleDao = vehicleDao;
 	}
 	
-	public static VehicleService getInstance() {
+	/*public static VehicleService getInstance() {
 		if (instance == null) {
 			instance = new VehicleService();
 		}
 		
 		return instance;
-	}
+	}*/
 	
 	
 	public long create(Vehicle vehicle) throws ServiceException {
 		try{
-			return VehicleDao.getInstance().create(vehicle);
+			if(vVehicle.Nb_placesOK(vehicle)) {
+				return this.vehicleDao.create(vehicle);
+			}else {
+				return 0;
+			}
+		}catch (DaoException e){
+			e.printStackTrace();
+			throw new ServiceException();
+		}
+	}
+
+	public long delete(Vehicle vehicle) throws ServiceException {
+		reservationDao = new ReservationDao();
+		clientDao = new ClientDao();
+		vehicleDao = new VehicleDao();
+		reservationService = new ReservationService(reservationDao,clientDao,vehicleDao);
+		reservationService.SuppByVehicleId(vehicle.getId());
+		try{
+			return this.vehicleDao.delete(vehicle);
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();
@@ -41,7 +72,7 @@ public class VehicleService {
 			throw new ServiceException("ERREUR : ID non valide");
 		}
 		try{
-			return VehicleDao.getInstance().findById(id);
+			return this.vehicleDao.findById(id);
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();
@@ -51,7 +82,7 @@ public class VehicleService {
 
 	public List<Vehicle> findAll() throws ServiceException {
 		try{
-			return VehicleDao.getInstance().findAll();
+			return this.vehicleDao.findAll();
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();
@@ -60,7 +91,7 @@ public class VehicleService {
 
 	public long Count() throws ServiceException {
 		try{
-			return VehicleDao.getInstance().Count();
+			return this.vehicleDao.Count();
 		}catch (DaoException e){
 			e.printStackTrace();
 			throw new ServiceException();

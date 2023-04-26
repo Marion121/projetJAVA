@@ -25,25 +25,27 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post" action="/rents/create">
+                        <form class="form-horizontal" method="post">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="car" class="col-sm-2 control-label">Voiture</label>
+                                    <label for="vehicles" class="col-sm-2 control-label">Voiture</label>
 
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="car" name="car">
-                                            <option value="1">Renault Clio</option>
-                                            <option value="2">Citroen C2</option>
-                                        </select>
+                                        <select class="form-control" id="vehicles" name="vehicles">
+                                            <c:forEach items="${vehicles}" var="vehicles">
+                                                <option value="${vehicles.id}"> ${vehicles.constructeur} ${vehicles.nb_places}</option>
+                                            </c:forEach>
+                                            </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="client" class="col-sm-2 control-label">Client</label>
+                                    <label for="clients" class="col-sm-2 control-label">Client</label>
 
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="client" name="client">
-                                            <option value="1">John Doe</option>
-                                            <option value="2">Jane Doe</option>
+                                        <select class="form-control" id="clients" name="clients">
+                                            <c:forEach items="${clients}" var="clients">
+                                                <option value="${clients.id}"> ${clients.nom} ${clients.prenom}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>

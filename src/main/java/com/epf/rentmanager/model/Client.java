@@ -1,7 +1,7 @@
 package com.epf.rentmanager.model;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.temporal.ChronoUnit;
 
 public class Client {
     private int id;
@@ -12,8 +12,15 @@ public class Client {
     private LocalDate naissance;
 
 
-    public Client( int id, String nom, String prenom, String email, LocalDate naissance) {
+    public Client(int id, String nom, String prenom, String email, LocalDate naissance) {
         this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.naissance = naissance;
+    }
+
+    public Client(String nom, String prenom, String email, LocalDate naissance) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -40,6 +47,7 @@ public class Client {
     public LocalDate getNaissance() {
         return naissance;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -69,6 +77,16 @@ public class Client {
                 ", prenom='" + prenom + '\'' +
                 ", email='" + email + '\'' +
                 ", naissance=" + naissance +
-                '}'+'\n';
+                '}' + '\n';
     }
+
+    public long getAge() {
+        LocalDate dateAujourdhui = LocalDate.now();
+        long age = ChronoUnit.YEARS.between(this.naissance, dateAujourdhui);
+        return age;
+    }
+
+
+
+
 }
