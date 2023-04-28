@@ -62,7 +62,7 @@
 
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="begin" name="begin" required
-                           data-inputmask="'alias': 'dd/mm/yyyy'" data-mask placeholder="${reservation.debut}">
+                           data-inputmask="'alias': 'dd/mm/yyyy'" data-mask placeholder="dd/mm/yyyy">
                   </div>
                 </div>
                 <div class="form-group">
@@ -70,13 +70,15 @@
 
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="end" name="end" required
-                           data-inputmask="'alias': 'dd/mm/yyyy'" data-mask placeholder="${reservation.fin}">
+                           data-inputmask="'alias': 'dd/mm/yyyy'" data-mask placeholder="dd/mm/yyyy">
+
                   </div>
                 </div>
+
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right">Ajouter</button>
+                <button type="submit" class="btn btn-info pull-right">Modifier</button>
               </div>
               <!-- /.box-footer -->
             </form>
