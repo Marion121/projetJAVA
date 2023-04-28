@@ -27,7 +27,7 @@ public class VehicleService {
 	public static VehicleService instance;
 	
 	public VehicleService(VehicleDao vehicleDao) {
-
+		vVehicle = new validateurVehicle();
 		this.vehicleDao = vehicleDao;
 	}
 	
@@ -44,6 +44,19 @@ public class VehicleService {
 		try{
 			if(vVehicle.Nb_placesOK(vehicle)) {
 				return this.vehicleDao.create(vehicle);
+			}else {
+				return 0;
+			}
+		}catch (DaoException e){
+			e.printStackTrace();
+			throw new ServiceException();
+		}
+	}
+
+	public long upadate(Vehicle vehicle) throws ServiceException {
+		try{
+			if(vVehicle.Nb_placesOK(vehicle)) {
+				return this.vehicleDao.update(vehicle);
 			}else {
 				return 0;
 			}

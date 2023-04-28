@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: mario
-  Date: 26/04/2023
-  Time: 15:28
+  Date: 28/04/2023
+  Time: 09:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
@@ -27,16 +27,9 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <h3 class="profile-username text-center">${vehicle.constructeur} (${vehicle.nb_places} )</h3>
+                            <h3 class="profile-username text-center">reservation numero ${reservation.id_R} (du ${reservation.debut} au ${reservation.fin} ) </h3>
 
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b>Reservation(s)</b> <a class="pull-right">${countResa}</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Client(s)</b> <a class="pull-right">${countClient}</a>
-                                </li>
-                            </ul>
+
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -46,33 +39,11 @@
                 <div class="col-md-9">
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#rents1" data-toggle="tab">Reservations</a></li>
-                            <li><a href="#clients" data-toggle="tab">Clients</a></li>
+                            <li class="active"><a href="#client" data-toggle="tab">Client</a></li>
+                            <li><a href="#voiture" data-toggle="tab">Voiture</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div class="active tab-pane" id="rents1">
-                                <div class="box-body no-padding">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <th style="width: 10px">#</th>
-                                            <th>CLient</th>
-                                            <th>Date de debut</th>
-                                            <th>Date de fin</th>
-                                        </tr>
-                                        <c:forEach items="${reservations}" var="reservation">
-                                            <tr>
-                                                <td>${reservation.id_R}</td>
-                                                <td>${reservation.client.nom} ${reservation.client.prenom}</td>
-                                                <td>${reservation.debut}</td>
-                                                <td>${reservation.fin}</td>
-                                            </tr>
-                                        </c:forEach>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="clients" >
-                                <!-- /.box-header -->
+                            <div class="active tab-pane" id="client">
                                 <div class="box-body no-padding">
                                     <table class="table table-striped">
                                         <tr>
@@ -82,7 +53,6 @@
                                             <th>Email</th>
                                             <th>Date de naissance</th>
                                         </tr>
-                                        <c:forEach items="${clients}" var="client">
                                             <tr>
                                                 <td>${client.id}</td>
                                                 <td>${client.nom}</td>
@@ -90,7 +60,24 @@
                                                 <td>${client.email}</td>
                                                 <td>${client.naissance}</td>
                                             </tr>
-                                        </c:forEach>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="voiture">
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Constructeur</th>
+                                            <th style=>Nombre de places</th>
+                                        </tr>
+                                            <tr>
+                                                <td>${vehicle.id}</td>
+                                                <td>${vehicle.constructeur}</td>
+                                                <td>${vehicle.nb_places}</td>
+                                            </tr>
                                     </table>
                                 </div>
                             </div>

@@ -24,30 +24,6 @@ public class main {
         ClientService clientService = context.getBean(ClientService.class);
         VehicleService vehicleService = context.getBean(VehicleService.class);
         ReservationService reservationService = context.getBean(ReservationService.class);
-        Reservation resa = new Reservation(27,4, 4, LocalDate.of(2023,12,12), LocalDate.of(2023,12,18));
-
-        //Client c  = new Client(5, "CHINEAUD", "Ma", "m.c@gmail.com", LocalDate.of(2002,1,12));
-            //Reservation r = new Reservation(1,1,1, LocalDate.of(2011,11,11), LocalDate.of(2012,12,12));
-        try{
-            Reservation r = new Reservation(8,1, LocalDate.of(2011,10,11), LocalDate.of(2011,10,13));
-            reservationService.create(r);
-
-            System.out.println(r);
-        List<Reservation> reservations = reservationService.findAll();
-        for (int i=0; i<reservations.size();i++ ){
-            Reservation re  = reservations.get(i);
-        }
-        System.out.println("reservation : "+reservations);
-        }catch(ServiceException e){
-            System.out.println("erreur");
-        }
-       // System.out.println(c.tailleNom());
-       /* try {
-
-        }catch(ServiceException e){
-            System.out.println("erreur");
-        }*/
-           // System.out.println("ici : " + VehicleService.getInstance().findAll());
 
     }
 }

@@ -42,38 +42,22 @@ public class ReservationService {
         return instance;
     }*/
 
-   /* public List<Reservation> findResaByVehicleId(int id_Vehicle) throws ServiceException {
-        List<Reservation> reservations = new ArrayList<Reservation>();
-        if(id_Vehicle<=0){
-            throw new ServiceException("ERREUR : ID non valide");
-        }
+    public long create(Reservation reservation) throws ServiceException {
         try{
-            reservations = reservationDao.findResaByClientId(id_Vehicle);
-            return reservations ;
+            if(vResa.pasReserverAujourdhui(reservation) & vResa.pas7jours(reservation) & vResa.pas30jours(reservation)){
+                return reservationDao.create(reservation);
+            }
+            return 0;
         }catch (DaoException e){
             e.printStackTrace();
             throw new ServiceException();
         }
     }
 
-    public List<Reservation> findResaByClientId(int id_Client) throws ServiceException {
-        List<Reservation> reservations = new ArrayList<Reservation>();
-        if(id_Client<=0){
-            throw new ServiceException("ERREUR : ID non valide");
-        }
-        try{
-            reservations = reservationDao.findResaByClientId(id_Client);
-            return reservations ;
-        }catch (DaoException e){
-            e.printStackTrace();
-            throw new ServiceException();
-        }
-    }*/
-
-    public long create(Reservation reservation) throws ServiceException {
+    public long update(Reservation reservation) throws ServiceException {
         try{
             if(vResa.pasReserverAujourdhui(reservation) & vResa.pas7jours(reservation) & vResa.pas30jours(reservation)){
-                return reservationDao.create(reservation);
+                return reservationDao.update(reservation);
             }
             return 0;
         }catch (DaoException e){
@@ -188,20 +172,4 @@ public class ReservationService {
             throw new ServiceException();
         }
     }
-
-    /*public List<Vehicle> findVehicleByClientId(int id_client) throws DaoException {
-        List<Reservation> reservations = new ArrayList<Reservation>();
-        List<Vehicle> vehicles = new ArrayList<Vehicle>();
-        try {
-            reservations = reservationDao.findResaByClientId(id_client);
-            for(int i =0; i<reservations.size(); i++){
-                Vehicle vehicle = this.vehicleDao.findById(reservations.get(i).getVehicle_id());
-                vehicles.add(vehicle);
-            }
-            return vehicles;
-        }catch (DaoException e){
-            e.printStackTrace();
-            throw new ServiceException();
-        }
-    }*/
 }

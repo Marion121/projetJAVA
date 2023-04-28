@@ -50,6 +50,20 @@ public class ClientService {
 		}
 	}
 
+	public long update(Client client) throws ServiceException {
+		try{
+			if( vClient.isLegal(client) & vClient.tailleNom(client) & vClient.mailOK(client)) {
+				return this.clientDao.update(client);
+			}
+			else{
+				return 0;
+			}
+		}catch (DaoException e){
+			e.printStackTrace();
+			throw new ServiceException();
+		}
+	}
+
 	public long delete(Client client) throws ServiceException {
 		reservationDao = new ReservationDao();
 		clientDao = new ClientDao();

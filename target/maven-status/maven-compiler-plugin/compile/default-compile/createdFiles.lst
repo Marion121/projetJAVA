@@ -1,4 +1,7 @@
 com\epf\rentmanager\servlet\vehicle\VehicleDeleteServet.class
 com\epf\rentmanager\servlet\vehicle\VehicleDetailServet.class
+com\epf\rentmanager\servlet\reservation\ResaModifServet.class
+com\epf\rentmanager\servlet\vehicle\VehicleUpdateServet.class
 com\epf\rentmanager\WebConfiguration.class
 com\epf\rentmanager\servlet\client\ClientModifServet.class
+com\epf\rentmanager\servlet\reservation\ResaDetailServet.class

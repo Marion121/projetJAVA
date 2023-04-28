@@ -3,6 +3,7 @@ C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\mai
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\main\main.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\vehicle\VehicleCreateServet.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\reservation\ResaListServet.java
+C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\reservation\ResaModifServet.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\client\ClientDeletServet.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\HomeServlet.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\validateur\validateurVehicle.java
@@ -21,8 +22,10 @@ C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\mai
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\dao\ReservationDao.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\service\ReservationService.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\reservation\ResaDeletServet.java
+C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\vehicle\VehicleUpdateServet.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\model\Vehicle.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\client\ClientModifServet.java
+C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\reservation\ResaDetailServet.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\model\Client.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\reservation\ResaCreateServet.java
 C:\Users\mario\OneDrive\Documents\EPF\4A\S8\java\rentmanager\rentmanager\src\main\java\com\epf\rentmanager\servlet\vehicle\VehicleDetailServet.java

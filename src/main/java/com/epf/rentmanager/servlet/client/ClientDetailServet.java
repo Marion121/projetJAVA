@@ -37,14 +37,20 @@ public class ClientDetailServet  extends HttpServlet  {
 
         try {
             final int id = Integer.parseInt(request.getParameter("id"));
-            //final int id= 1  ;
+            boolean trouve = false;
             List<Reservation> reservations = this.reservationService.findResaByClientId(id);
             List<Vehicle> vehicles = new ArrayList<Vehicle>();
-            //List<Vehicle> vehicles = this.reservationService.findVehicleByClientId(id);
             for (Reservation resa : reservations) {
                 Vehicle v =vehicleService.findById(resa.getVehicle_id());
-                vehicles.add(v);
-                System.out.println(v);
+                for(Vehicle vehicle : vehicles){
+                    if(v.getId()==vehicle.getId()){
+                        trouve = true;
+                    }
+                }
+                if(!trouve){
+                    vehicles.add(v);
+                }
+                trouve = false;
             }
             request.setAttribute("client",this.clientService.findById(id));
             request.setAttribute("reservation", reservations );
